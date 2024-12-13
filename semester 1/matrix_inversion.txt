@@ -1,0 +1,39 @@
+# Code: Matrix Inversion
+
+## Description
+This program computes the inverse of a 3x3 matrix. If the determinant of the matrix is zero, the program outputs an error message indicating that the matrix is singular.
+
+## How It Works
+1. **Input**:
+   - A 3x3 matrix `a[3][3]`.
+2. **Determinant Calculation**:
+   - Computes the determinant using cofactor expansion along the first row.
+3. **Matrix Inversion**:
+   - If the determinant is non-zero:
+     - Computes the inverse using the formula:
+       A^-1 = Cofactor Transpose / Determinant
+   - Otherwise, prints `ERROR` if the matrix is singular.
+4. **Output**:
+   - The inverse matrix, formatted with tab-separated values.
+
+## Example Usage
+### Input:
+1 2 3
+0 1 4
+5 6 0
+### Output:
+-24.0	18.0	5.0	
+20.0	-15.0	-4.0	
+-5.0	4.0	1.0
+
+### Input:
+1 2 3
+4 5 6
+7 8 9
+### Output:
+ERROR
+
+## File Information
+- **Filename**: `matrix_inversion.cpp`
+- **Language**: C++
+- **Dependencies**: Standard C++ library (`iostream`).

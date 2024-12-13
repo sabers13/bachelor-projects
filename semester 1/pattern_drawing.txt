@@ -1,0 +1,45 @@
+# Code: Pattern Drawing Program
+
+## Description
+This program generates a specific pattern based on an input integer `n`. The pattern is printed as a grid of `#` and spaces (` `), forming a visual structure defined by conditional rules.
+
+## How It Works
+1. The program reads an integer `n`, which determines the size of the grid.
+2. It uses two nested loops:
+   - Outer loop (`i`): Iterates from 1 to `n`, representing rows.
+   - Inner loop (`j`): Iterates from 1 to `n`, representing columns.
+3. For each cell in the grid, the program decides whether to print `#` or ` ` (space) based on the following conditions:
+   - Always print `#` at the beginning (`j == 1`) and end (`j == n-1`) of each row.
+   - Print `#` when `j == i-1` (diagonal from top-left to bottom-right).
+   - Print `#` for other specific conditions ensuring the structure of the pattern.
+4. The pattern is printed line by line.
+
+## Example Usage
+### Input:
+5
+### Output:
+#####
+#   #
+#  ##
+# ###
+#####
+
+### Input:
+3
+### Output:
+###
+# #
+###
+
+## File Information
+- **Filename**: `pattern_drawing.cpp`
+- **Language**: C++
+- **Dependencies**: Standard C++ library (`iostream`).
+
+## Instructions for Running the Code
+1. Compile the program using a C++ compiler, such as `g++`:
+   g++ -o pattern_drawing pattern_drawing.cpp
+2. Run the compiled program:
+   ./pattern_drawing
+3. Enter an integer `n` as input.
+4. Observe the resulting pattern output to the console.

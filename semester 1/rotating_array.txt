@@ -1,0 +1,28 @@
+# Code: Rotating Array Elements
+
+## Description
+This program performs a circular rotation of elements in a 1D array of size 100. The number of rotations is specified by the user, and the program outputs the resulting array in a formatted 10x10 matrix.
+
+## How It Works
+1. **Input**:
+   - The number of rotations `b`.
+   - An array `n[100]` containing 100 integers.
+2. **Rotation Logic**:
+   - The effective number of rotations is calculated as `b % 100`.
+   - For each rotation:
+     - The first element is moved to the end of the array, and all elements are shifted one position to the left.
+3. **Output**:
+   - The final rotated array is displayed as a 10x10 matrix.
+
+## Example Usage
+### Input:
+3
+1 2 3 4 5 6 7 8 9 10 ... (up to 100)
+### Output:
+4 5 6 7 8 9 10 1 2 3
+... (rest of the rotated array)
+
+## File Information
+- **Filename**: `rotating_array.cpp`
+- **Language**: C++
+- **Dependencies**: Standard C++ library (`iostream`).

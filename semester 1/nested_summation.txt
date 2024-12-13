@@ -1,0 +1,41 @@
+# Code: Nested Summation Calculator
+
+## Description
+This program calculates a nested summation based on two input integers, `n` and `m`. The computation involves a series of mathematical operations over two nested loops.
+
+## How It Works
+1. The program reads two integers:
+   - `n`: Upper limit for the inner loop.
+   - `m`: Upper limit for the outer loop.
+2. It iterates over a range of values:
+   - Outer loop iterates from `-10` to `m`.
+   - Inner loop iterates from `1` to `n`.
+3. For each combination of indices `i` and `j`:
+   - Computes ((i + j)^3) / (j^2).
+   - Accumulates the results into a temporary variable `s` for the inner loop.
+4. The result from the inner loop is added to a total `sum` for the outer loop.
+5. The program outputs the total summation value.
+
+## Example Usage
+### Input:
+2 3
+### Output:
+19476
+
+### Input:
+1 1
+### Output:
+1980
+
+## File Information
+- **Filename**: `nested_summation.cpp`
+- **Language**: C++
+- **Dependencies**: Standard C++ library (`iostream`).
+
+## Instructions for Running the Code
+1. Compile the program using a C++ compiler, such as `g++`:
+   g++ -o nested_summation nested_summation.cpp
+2. Run the compiled program:
+   ./nested_summation
+3. Enter two integers (`n` and `m`) as inputs.
+4. Observe the computed summation value as the output.

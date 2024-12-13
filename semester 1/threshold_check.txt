@@ -1,0 +1,114 @@
+
+# Code: Even Number Checker
+
+## Description
+This C++ program checks if an input integer is a positive even number greater than 2. Based on the input, it outputs one of the following:
+- `YES`: The number is a positive even integer greater than 2.
+- `NO`: The number is either odd, equal to 2, or not greater than 2.
+
+## How It Works
+1. The program accepts a single unsigned integer as input.
+2. It checks the following conditions:
+   - If the number is odd (`a % 2 != 0`), it prints `NO`.
+   - If the number is even but equal to 2, it prints `NO`.
+   - Otherwise, it prints `YES`.
+
+## Example Usage
+### Input: 
+```
+4
+```
+### Output:
+```
+YES
+```
+
+### Input:
+```
+3
+```
+### Output:
+```
+NO
+```
+
+### Input:
+```
+2
+```
+### Output:
+```
+NO
+```
+
+## File Information
+- **Filename**: `even_checker.cpp`
+- **Language**: C++
+- **Dependencies**: Standard C++ library (`iostream`).
+
+## Instructions for Running the Code
+1. Compile the program using a C++ compiler, such as `g++`:
+   ```bash
+   g++ -o even_checker even_checker.cpp
+   ```
+2. Run the compiled program:
+   ```bash
+   ./even_checker
+   ```
+3. Enter an unsigned integer when prompted and observe the result.
+
+---
+
+# Code: Threshold Check on Sequence
+
+## Description
+This program checks if the count of non-positive integers in a sequence meets or exceeds a given threshold. It takes two inputs: the size of the sequence and the threshold value, followed by the sequence itself.
+
+## How It Works
+1. The program reads:
+   - `n`: the size of the sequence.
+   - `k`: the threshold value.
+2. It processes the sequence of `n` integers and counts how many of them are less than or equal to 0 (`m <= 0`).
+3. Based on the count:
+   - If the count is greater than or equal to `k`, it prints `YES`.
+   - Otherwise, it prints `NO`.
+
+## Example Usage
+### Input:
+```
+5 3
+-1 -2 -3 4 5
+```
+### Output:
+```
+YES
+```
+
+### Input:
+```
+4 2
+1 2 3 4
+```
+### Output:
+```
+NO
+```
+
+## File Information
+- **Filename**: `threshold_check.cpp`
+- **Language**: C++
+- **Dependencies**: Standard C++ library (`iostream`).
+
+## Instructions for Running the Code
+1. Compile the program using a C++ compiler, such as `g++`:
+   ```bash
+   g++ -o threshold_check threshold_check.cpp
+   ```
+2. Run the compiled program:
+   ```bash
+   ./threshold_check
+   ```
+3. Enter the inputs:
+   - First, the size of the sequence (`n`) and the threshold value (`k`).
+   - Then, input `n` integers (space-separated or newline-separated).
+4. Observe the result, which will be either `YES` or `NO`.

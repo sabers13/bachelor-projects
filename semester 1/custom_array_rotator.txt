@@ -1,0 +1,47 @@
+# Code: Custom Array Rotator
+
+## Description
+This program manipulates an array of 10 integers based on user-defined parameters. It rotates or rearranges elements using a custom indexing rule defined by the input variables `a` and `b`.
+
+## How It Works
+1. **Inputs**:
+   - `a`: Used as a multiplier for calculating custom indices.
+   - `b`: Determines the number of rotation cycles (modulo 10).
+   - An array `n[10]`: Consists of 10 integers provided by the user.
+
+2. **Processing**:
+   - The program calculates the effective number of rotations using `b % 10`.
+   - For each rotation (up to `b` cycles):
+     - Iterates through the array and swaps adjacent elements based on a custom indexing formula:
+       - Swaps `n[i + 1]` with `n[a * i]`.
+
+3. **Output**:
+   - After completing the rotations, the program outputs the rearranged array.
+
+## Example Usage
+### Input:
+2 3
+1 2 3 4 5 6 7 8 9 10
+### Output:
+1 3 2 5 4 7 6 9 8 10
+
+### Input:
+1 1
+10 9 8 7 6 5 4 3 2 1
+### Output:
+10 9 8 7 6 5 4 3 2 1
+
+## File Information
+- **Filename**: `custom_array_rotator.cpp`
+- **Language**: C++
+- **Dependencies**: Standard C++ library (`iostream`).
+
+## Instructions for Running the Code
+1. Compile the program using a C++ compiler:
+   g++ -o custom_array_rotator custom_array_rotator.cpp
+2. Run the compiled program:
+   ./custom_array_rotator
+3. Enter the inputs:
+   - First, enter two integers `a` and `b`.
+   - Then, enter 10 integers for the array.
+4. The program will output the rearranged array.

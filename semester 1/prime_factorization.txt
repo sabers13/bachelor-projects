@@ -1,0 +1,45 @@
+# Code: Prime Factorization with Exponents
+
+## Description
+This program performs the prime factorization of a given number and outputs the factors along with their respective powers in a formatted manner.
+
+## How It Works
+1. The program reads an integer `number` as input.
+2. It iterates through all integers starting from 2 up to the value of `number` to find prime divisors.
+3. For each divisor:
+   - It checks if the current number is divisible by the divisor.
+   - If divisible, it determines the power of the divisor by continuously dividing the number until it is no longer divisible.
+   - Prints the divisor and its power:
+     - If the power is 1, it only prints the divisor.
+     - If the power is greater than 1, it prints the divisor followed by its power in the format `divisor^power`.
+4. If there are more factors to follow, it appends a `*` symbol to separate them.
+5. Outputs the result.
+
+## Example Usage
+### Input:
+18
+### Output:
+2*3^2
+
+### Input:
+60
+### Output:
+2^2*3*5
+
+### Input:
+1
+### Output:
+1
+
+## File Information
+- **Filename**: `prime_factorization.cpp`
+- **Language**: C++
+- **Dependencies**: Standard C++ library (`iostream`).
+
+## Instructions for Running the Code
+1. Compile the program using a C++ compiler, such as `g++`:
+   g++ -o prime_factorization prime_factorization.cpp
+2. Run the compiled program:
+   ./prime_factorization
+3. Enter a number as input.
+4. Observe the prime factors and their powers formatted as output.

@@ -1,0 +1,40 @@
+# Code: Selection Sort Implementation
+
+## Description
+This program implements the **Selection Sort** algorithm to sort an array of 100 integers in descending order. The largest elements are placed first, and the smallest elements last.
+
+## How It Works
+1. **Input**:
+   - The program reads 100 integers into an array `items[100]`.
+2. **Sorting Logic**:
+   - Uses the **Selection Sort** algorithm:
+     1. For each position `j` in the array (from 0 to 98), find the largest element in the unsorted portion (from `j` to 99).
+     2. Swap the largest element with the element at position `j`.
+   - The outer loop (`j`) iterates through each position in the array, progressively shrinking the unsorted portion.
+   - The inner loop (`i`) identifies the largest element and its index (`maxIndex`) in the unsorted portion.
+3. **Output**:
+   - The program outputs the sorted array, with elements in descending order.
+
+## Example Usage
+### Input:
+5 2 8 1 9 ... (up to 100 integers)
+### Output:
+9 8 5 2 1 ... (sorted in descending order)
+
+### Input:
+100 99 98 ... 1
+### Output:
+100 99 98 ... 1 (already sorted in descending order)
+
+## File Information
+- **Filename**: `selection_sort.cpp`
+- **Language**: C++
+- **Dependencies**: Standard C++ library (`iostream`).
+
+## Instructions for Running the Code
+1. Compile the program using a C++ compiler:
+   g++ -o selection_sort selection_sort.cpp
+2. Run the compiled program:
+   ./selection_sort
+3. Enter 100 integers as input.
+4. The program will output the sorted array in descending order.

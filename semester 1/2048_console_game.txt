@@ -1,0 +1,70 @@
+# Code: 2048 Console Game
+
+## Description
+This program implements a text-based version of the popular **2048 game** in the console. Players combine tiles to reach a value of 2048 while moving the tiles in different directions on a 4x4 board.
+
+## How It Works
+1. **Main Menu**:
+   - Offers the following options:
+     - Start the game.
+     - View credits.
+     - View past game records (stored in `records.txt`).
+     - Exit the game.
+   - Players enter their name when starting the game.
+
+2. **Game Logic**:
+   - **Controls**:
+     - Move tiles using `L`, `R`, `U`, or `D` (left, right, up, down).
+     - Exit the game using `E`.
+   - **Gameplay**:
+     - Tiles move and combine when adjacent tiles have the same value.
+     - After each move, a new tile with the value 2 appears randomly on the board.
+   - **Winning and Losing**:
+     - Win: Reach a tile with the value **2048**.
+     - Lose: No valid moves remain.
+
+3. **Score**:
+   - Score is updated based on the sum of all tile values on the board.
+
+4. **Records**:
+   - The player’s name and final score are saved in `records.txt` after each game.
+
+5. **Rendering**:
+   - The game board is displayed as a grid of tiles, with empty spaces shown as `[    ]` and tiles displayed with their respective values.
+
+## Example Usage
+### Main Menu:
+===2048 Game===
+1. Start Game
+2. Credits
+3. Records
+4. Exit
+Enter a number:
+
+### Gameplay:
+- **Initial Board**:
+===2048 Game===
+[    ][    ][    ][   2]
+[    ][    ][    ][    ]
+[    ][    ][    ][    ]
+[    ][    ][    ][    ]
+
+
+## File Information
+- **Filename**: `2048_console_game.cpp`
+- **Language**: C++
+- **Dependencies**:
+  - Standard C++ library (`iostream`, `string`, `cstdlib`, `ctime`, `fstream`).
+  - `<conio.h>` for capturing user input without requiring the Enter key.
+- **Output File**: `records.txt` (to save player names and scores).
+
+## Instructions for Running the Code
+1. **Compile the program**:
+   g++ -o 2048_game 2048_console_game.cpp
+2. **Run the program**:
+   ./2048_game
+3. **Controls**:
+   - Use `L`, `R`, `U`, or `D` to move tiles.
+   - Use `E` to exit the game.
+4. **Endgame**:
+   - If you win or lose, the game returns to the main menu.

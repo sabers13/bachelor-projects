@@ -1,0 +1,39 @@
+# Code: Greatest Common Divisor (GCD) and Least Common Multiple (LCM) Finder
+
+## Description
+This program calculates the **Greatest Common Divisor (GCD)** and **Least Common Multiple (LCM)** of two integers using the Euclidean algorithm. The program outputs both the GCD and LCM of the two input numbers.
+
+## How It Works
+1. The program reads two integers:
+   - `x`: the first number.
+   - `y`: the second number.
+2. It computes the GCD using the Euclidean algorithm:
+   - Iteratively calculates the remainder (`c`) of the division `a % b` until the remainder is 0.
+   - The last non-zero divisor (`b`) is the GCD.
+3. It calculates the LCM using the formula:
+   LCM(x, y) = (x * y) / GCD(x, y)
+4. Outputs the GCD followed by the LCM.
+
+## Example Usage
+### Input:
+12 18
+### Output:
+6 36
+
+### Input:
+7 5
+### Output:
+1 35
+
+## File Information
+- **Filename**: `gcd_lcm_finder.cpp`
+- **Language**: C++
+- **Dependencies**: Standard C++ library (`iostream`).
+
+## Instructions for Running the Code
+1. Compile the program using a C++ compiler, such as `g++`:
+   g++ -o gcd_lcm_finder gcd_lcm_finder.cpp
+2. Run the compiled program:
+   ./gcd_lcm_finder
+3. Enter the two integers as inputs.
+4. Observe the result, which will display the GCD followed by the LCM.

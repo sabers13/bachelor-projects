@@ -1,0 +1,39 @@
+# Code: Next Prime Matching Digit Sum
+
+## Description
+This program identifies the first prime number greater than a given integer `n` whose digit sum matches the digit sum of `n`.
+
+## How It Works
+1. The program reads an integer `n`.
+2. It calculates the digit sum of `n`:
+   - Iteratively sums the digits of `n` until the full number is processed.
+3. Starting from `n+1`, it checks successive integers to find the next prime number:
+   - For each number, it verifies primality by ensuring it is not divisible by any number between 2 and itself (exclusive).
+   - If a number is prime, it calculates its digit sum.
+   - It compares the digit sum of the prime number to the digit sum of `n`.
+   - If the digit sums match, the program outputs the number.
+4. Outputs the result and ends.
+
+## Example Usage
+### Input:
+10
+### Output:
+11
+
+### Input:
+28
+### Output:
+37
+
+## File Information
+- **Filename**: `next_prime_matching_sum.cpp`
+- **Language**: C++
+- **Dependencies**: Standard C++ library (`iostream`).
+
+## Instructions for Running the Code
+1. Compile the program using a C++ compiler, such as `g++`:
+   g++ -o next_prime_matching_sum next_prime_matching_sum.cpp
+2. Run the compiled program:
+   ./next_prime_matching_sum
+3. Enter an integer `n` as input.
+4. Observe the result, which will be the next prime number matching the digit sum of `n`.
