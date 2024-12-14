@@ -1,0 +1,755 @@
+
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+/**
+ *
+ * @author Saber
+ */
+public class purchase extends javax.swing.JFrame {
+
+    /**
+     * Creates new form listOfProducts
+     */
+    public purchase() throws SQLException {
+        initComponents();
+        setTables();
+    }
+//enum product { TV,Refrigerator,AC}
+    DefaultTableModel tblModel = new DefaultTableModel();
+
+    public void setTables() throws SQLException {
+
+        tblModel.addColumn("Product");
+        tblModel.addColumn("Type");
+        tblModel.addColumn("Price");
+        tblModel.addColumn("qty");
+        tblModel.addColumn("Total");
+        receiptTable.setModel(tblModel);
+
+        DefaultTableModel tvTblModel = new DefaultTableModel();
+
+        tvTblModel.addColumn("Name of Product");
+        tvTblModel.addColumn("Manufacturer");
+        tvTblModel.addColumn("Resolution");
+        tvTblModel.addColumn("Price($)");
+        tvTblModel.addColumn("QTY");
+
+        DefaultTableModel refrigeratorTblModel = new DefaultTableModel();
+
+        refrigeratorTblModel.addColumn("Name of Product");
+        refrigeratorTblModel.addColumn("Manufacturer");
+        refrigeratorTblModel.addColumn("Volume");
+        refrigeratorTblModel.addColumn("Price($)");
+        refrigeratorTblModel.addColumn("QTY");
+
+        DefaultTableModel acTblModel = new DefaultTableModel();
+
+        acTblModel.addColumn("Name of Product");
+        acTblModel.addColumn("Manufacturer");
+        acTblModel.addColumn("BTU");
+        acTblModel.addColumn("Price($)");
+        acTblModel.addColumn("QTY");
+
+        try {
+
+            Connection conn = database.connectManufacturersdb();
+            String a = "SELECT * FROM manufacturer";
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(a);
+            while (rs.next()) {
+                String name = rs.getString("name");
+                Connection manufacturerConn = database.connectManufacturerdb(name);
+                String q = "SELECT * FROM " + name;
+                Statement stmManufacturer = manufacturerConn.createStatement();
+                ResultSet rsManufacturer = stmManufacturer.executeQuery(q);
+                while (rsManufacturer.next()) {
+                    String type = rsManufacturer.getString("Product");
+                    String manufacturer = name;
+
+                    if (type.equals("TV")) {
+                        String nameOfProduct = rsManufacturer.getString("model") +managerEditPanel.nameOfStore() + " Edition";
+
+                        String spec = rsManufacturer.getString("spec");
+                        double price;
+                        price = rsManufacturer.getDouble("price");
+                        int qty = rsManufacturer.getInt("qty");
+                        tvTblModel.addRow(new Object[]{nameOfProduct, manufacturer, spec, price, qty});
+
+                    } else if (type.equals("Refrigerator")) {
+                        String nameOfProduct = rsManufacturer.getString("model") +managerEditPanel.nameOfStore()+" Edition";
+                        manufacturer = name;
+                        String spec = rsManufacturer.getString("spec");
+
+                        double price = rsManufacturer.getDouble("price");
+                        int qty = rsManufacturer.getInt("qty");
+
+                        refrigeratorTblModel.addRow(new Object[]{nameOfProduct, manufacturer, spec, price, qty});
+
+                    } else if (type.equals("AC")) {
+                        String nameOfProduct = rsManufacturer.getString("model") +managerEditPanel.nameOfStore()+ " Edition";
+                        manufacturer = name;
+                        String spec = rsManufacturer.getString("spec");
+
+                        double price = rsManufacturer.getDouble("price");
+                        int qty = rsManufacturer.getInt("qty");
+
+                        acTblModel.addRow(new Object[]{nameOfProduct, manufacturer, spec, price, qty});
+
+                    }
+                }
+            }
+            tvTable.setModel(tvTblModel);
+            acTable.setModel(acTblModel);
+            refrigeratorTable.setModel(refrigeratorTblModel);
+        } catch (Exception e) {
+
+        }
+
+    }
+
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tvTable = new javax.swing.JTable();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        acTable = new javax.swing.JTable();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        refrigeratorTable = new javax.swing.JTable();
+        back = new javax.swing.JButton();
+        reduceButton = new javax.swing.JButton();
+        addButton = new javax.swing.JButton();
+        submitButton = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        receiptTable = new javax.swing.JTable();
+        allTotalLabel = new javax.swing.JLabel();
+        menuLabel1 = new javax.swing.JLabel();
+        menuLabel2 = new javax.swing.JLabel();
+        menuLabel3 = new javax.swing.JLabel();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Name of product", "Manufacturer", "BTU", "Price"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        tvTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Name of product", "Manufacturer", "Resolution", "Price"
+            }
+        ));
+        jScrollPane3.setViewportView(tvTable);
+
+        acTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Name of product", "Manufacturer", "BTU", "Price"
+            }
+        ));
+        jScrollPane5.setViewportView(acTable);
+
+        refrigeratorTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Name of product", "Manufacturer", "Volume", "Price"
+            }
+        ));
+        jScrollPane6.setViewportView(refrigeratorTable);
+
+        back.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        back.setText("back");
+        back.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backActionPerformed(evt);
+            }
+        });
+
+        reduceButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        reduceButton.setText("-");
+        reduceButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reduceButtonActionPerformed(evt);
+            }
+        });
+
+        addButton.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        addButton.setText("+");
+        addButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addButtonActionPerformed(evt);
+            }
+        });
+
+        submitButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        submitButton.setText("Submit and pay");
+        submitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                submitButtonActionPerformed(evt);
+            }
+        });
+
+        receiptTable.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        receiptTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Order", "price", "qty", "total"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Double.class, java.lang.Integer.class, java.lang.Double.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        receiptTable.setRowHeight(25);
+        jScrollPane2.setViewportView(receiptTable);
+
+        allTotalLabel.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+
+        menuLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        menuLabel1.setText("TVs");
+        menuLabel1.setToolTipText("");
+
+        menuLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        menuLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        menuLabel2.setText("Refrigerator");
+        menuLabel2.setToolTipText("");
+        menuLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        menuLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
+        menuLabel3.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        menuLabel3.setText("ACs");
+        menuLabel3.setToolTipText("");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(206, 206, 206)
+                .addComponent(back, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(reduceButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(addButton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(menuLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(menuLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(menuLabel2))
+                        .addGap(38, 38, 38)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(allTotalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 496, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 88, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(46, 46, 46)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(menuLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addComponent(menuLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(99, 99, 99)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(menuLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(submitButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(reduceButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(back, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(addButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(27, 27, 27))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(107, 107, 107)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(allTotalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+
+        this.setVisible(false);
+    }//GEN-LAST:event_backActionPerformed
+
+    private void reduceButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reduceButtonActionPerformed
+int i = receiptTable.getSelectedRow();
+        //int j = receiptTable.getSelectedColumn();
+        String product = (String) receiptTable.getModel().getValueAt(i, 0);
+        String type = (String) receiptTable.getModel().getValueAt(i, 1);
+        double price = (double) receiptTable.getModel().getValueAt(i, 2);
+
+        int qty = (int) receiptTable.getModel().getValueAt(i, 3);
+
+        if (qty == 1) {
+
+            ((DefaultTableModel) receiptTable.getModel()).removeRow(i);
+            Alltotal();
+        } else {
+            qty = qty - 1;
+            double total = price * qty;
+
+            ((DefaultTableModel) receiptTable.getModel()).removeRow(i);
+            tblModel.addRow(new Object[]{product,type, price, qty, total});
+            Alltotal();
+        }
+        if (type.equals("TV")) {
+            for (int x = 0; x < tvTable.getRowCount(); x++) {
+                //int y = 0;
+                if (product.equals((String) tvTable.getModel().getValueAt(x, 0))) {
+                    int QTY=(int) tvTable.getModel().getValueAt(x, 4)+1;
+                    tvTable.setValueAt(QTY, x, 4);
+                    
+                }
+            }
+        } else if(type.equals("AC")){
+            for (int x = 0; x < acTable.getRowCount(); x++) {
+                //int y = 0;
+                if (product.equals((String) acTable.getModel().getValueAt(x, 0))) {
+                    int QTY=(int) acTable.getModel().getValueAt(x, 4)+1;
+                    acTable.setValueAt(QTY, x, 4);
+                    
+                }
+            }
+        }else if(type.equals("Refrigerator")){
+                for (int x = 0; x < refrigeratorTable.getRowCount(); x++) {
+                //int y = 0;
+                if (product.equals((String) refrigeratorTable.getModel().getValueAt(x, 0))) {
+                    int QTY=(int) refrigeratorTable.getModel().getValueAt(x, 4)+1;
+                    refrigeratorTable.setValueAt(QTY, x, 4);
+                    
+                }
+                }
+            
+        }
+            
+    }//GEN-LAST:event_reduceButtonActionPerformed
+
+    private void addButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addButtonActionPerformed
+        if (tvTable.getSelectedRow() != -1) {
+            addTV();
+        } else if (acTable.getSelectedRow() != -1) {
+            addAC();
+        } else if (refrigeratorTable.getSelectedRow() != -1) {
+            addRefrigerator();
+        }
+    }//GEN-LAST:event_addButtonActionPerformed
+
+    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
+for (int x = 0; x < tvTable.getRowCount(); x++) {
+    String manufacturer = (String) tvTable.getModel().getValueAt(x, 1);
+    String name = (String) tvTable.getModel().getValueAt(x, 0);
+    int qty=(int)tvTable.getModel().getValueAt(x, 4);
+    int index = name.lastIndexOf(managerEditPanel.nameOfStore()+" Edition");
+    name =name.substring(0, index);
+    database.updateManufacturerQtydb(manufacturer, qty, name);
+    
+           
+}
+for (int x = 0; x < refrigeratorTable.getRowCount(); x++) {
+    String type = (String) refrigeratorTable.getModel().getValueAt(x, 1);
+    String name = (String) refrigeratorTable.getModel().getValueAt(x, 0);
+    int qty=(int)refrigeratorTable.getModel().getValueAt(x, 4);
+    int index = name.lastIndexOf(managerEditPanel.nameOfStore()+" Edition");
+    name =name.substring(0, index);
+    database.updateManufacturerQtydb(type, qty, name);
+    
+           
+}
+for (int x = 0; x < acTable.getRowCount(); x++) {
+    String type = (String) acTable.getModel().getValueAt(x, 1);
+    String name = (String) acTable.getModel().getValueAt(x, 0);
+    int qty=(int)acTable.getModel().getValueAt(x, 4);
+    int index = name.lastIndexOf(managerEditPanel.nameOfStore()+" Edition");
+    name =name.substring(0, index);
+    database.updateManufacturerQtydb(type, qty, name);
+   // System.out.println(userSignIn.clientUsernameField.getText());
+           
+}
+try {
+            if (!existenceOfDB()) {
+                createOrdersDB();
+            }
+            submitOrders();
+        } catch (ClassNotFoundException ex) {
+            
+        } catch (SQLException ex) {
+           
+        }
+
+        JOptionPane.showMessageDialog(null, "Thank you for your purchase!");
+        Start backToFirstMenu = new Start();
+        backToFirstMenu.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_submitButtonActionPerformed
+    
+    public void createOrdersDB() throws ClassNotFoundException, SQLException {
+        String DB = userSignIn.nameOFUser()+ "Orders";
+        Class.forName("org.sqlite.JDBC");
+
+        Connection conn = DriverManager.getConnection("jdbc:sqlite:" + DB + ".db");
+        Statement stmt = conn.createStatement();
+        String sql = "CREATE TABLE  " + DB
+                + "(orders TEXT ,"
+                + "total TEXT"
+                + ");";
+
+        stmt.executeUpdate(sql);
+        conn.close();
+    }
+
+    public void submitOrders() throws ClassNotFoundException, SQLException {
+        String DB = userSignIn.nameOFUser() + "Orders";
+        Class.forName("org.sqlite.JDBC");
+
+        Connection conn = DriverManager.getConnection("jdbc:sqlite:" + DB + ".db");
+        String a = "INSERT INTO " + DB + " (orders,total) VALUES(?,?)";
+        PreparedStatement pst = conn.prepareStatement(a);
+        String orderDetails = "";
+        String total = allTotalLabel.getText();
+
+        //String user = userSignIn.nameOFUser();
+        //System.out.println(user);
+        for (int x = 0; x < receiptTable.getRowCount(); x++) {
+            String orderDetail = "order: " + (String) receiptTable.getModel().getValueAt(x, 0) + "-price: "
+                    + (double) receiptTable.getModel().getValueAt(x, 2) + "$-qty: " + (int) receiptTable.getModel().getValueAt(x, 3)
+                    + "___";
+          //  total = (double) receiptTable.getModel().getValueAt(x, 4);
+            orderDetails = orderDetails + orderDetail;
+
+        }
+       // pst.setString(1, user);
+        pst.setString(1, orderDetails);
+        pst.setString(2, total);
+        pst.execute();
+
+        conn.close();
+    }
+    public boolean existenceOfDB() throws ClassNotFoundException, SQLException {
+        boolean flag = false;
+        Class.forName("org.sqlite.JDBC");
+        String DB = userSignIn.nameOFUser()  + "Orders";
+
+        Connection conn = DriverManager.getConnection("jdbc:sqlite:" + DB + ".db");
+        DatabaseMetaData dbm = conn.getMetaData();
+        ResultSet tables = dbm.getTables(null, null, DB, null);
+        if (tables.next()) {
+            flag = true;
+            //System.out.println("yes");
+        } else {
+            flag = false;
+
+        }
+        conn.close();
+        return flag;
+    }
+
+    int add = 0;
+
+    public void addAC() {
+        int i = acTable.getSelectedRow();
+        //int j = acTable.getSelectedColumn();
+        int qty = 1;
+        boolean found = false;
+        int rowToRemove = 0;
+        int QTY = (int) acTable.getModel().getValueAt(i, 4);
+        if (QTY != 0) {
+            if (add != 0) {
+                for (int x = 0; x < receiptTable.getRowCount(); x++) {
+                    //int y = 0;
+                    if (receiptTable.getModel().getValueAt(x, 0).equals((String) acTable.getModel().getValueAt(i, 0))) {
+                        found = true;
+                        rowToRemove = x;
+                        qty = (int) receiptTable.getModel().getValueAt(x, 3);
+                        qty++;
+
+                    }
+                }
+            }
+            add++;
+            if (!found) {
+
+                String product = (String) acTable.getModel().getValueAt(i, 0);
+                double price = (double) acTable.getModel().getValueAt(i, 3);
+
+                double total = qty * price;
+
+                tblModel.addRow(new Object[]{product,"AC", price, qty, total});
+
+            } else {
+                ((DefaultTableModel) receiptTable.getModel()).removeRow(rowToRemove);
+                String product = (String) acTable.getModel().getValueAt(i, 0);
+                double price = (double) acTable.getModel().getValueAt(i, 3);
+
+                double total = qty * price;
+
+                tblModel.addRow(new Object[]{product,"AC", price, qty, total});
+            }
+            QTY--;
+            acTable.setValueAt(QTY, i, 4);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "out of order");
+        }
+        Alltotal();
+        clearSelection();
+
+    }
+
+    public void addRefrigerator() {
+
+        int i = refrigeratorTable.getSelectedRow();
+        //int j = refrigeratorTable.getSelectedColumn();
+        int qty = 1;
+        boolean found = false;
+        int rowToRemove = 0;
+        int QTY = (int) refrigeratorTable.getModel().getValueAt(i, 4);
+
+        if (QTY != 0) {
+            if (add != 0) {
+                for (int x = 0; x < receiptTable.getRowCount(); x++) {
+                    //int y = 0;
+                    if (receiptTable.getModel().getValueAt(x, 0).equals((String) refrigeratorTable.getModel().getValueAt(i, 0))) {
+                        found = true;
+                        rowToRemove = x;
+                        qty = (int) receiptTable.getModel().getValueAt(x, 3);
+                        qty++;
+
+                    }
+                }
+            }
+            add++;
+            if (!found) {
+
+                String product = (String) refrigeratorTable.getModel().getValueAt(i, 0);
+                double price = (double) refrigeratorTable.getModel().getValueAt(i, 3);
+
+                double total = qty * price;
+
+                tblModel.addRow(new Object[]{product,"Refrigerator", price, qty, total});
+
+            } else {
+                ((DefaultTableModel) receiptTable.getModel()).removeRow(rowToRemove);
+                String product = (String) refrigeratorTable.getModel().getValueAt(i, 0);
+                double price = (double) refrigeratorTable.getModel().getValueAt(i, 3);
+
+                double total = qty * price;
+
+                tblModel.addRow(new Object[]{product,"Refrigerator", price, qty, total});
+            }
+            QTY--;
+            refrigeratorTable.setValueAt(QTY, i, 4);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "out of order");
+        }
+        Alltotal();
+        clearSelection();
+    }
+
+    public void addTV() {
+        int i = tvTable.getSelectedRow();
+        // int j = tvTable.getSelectedColumn();
+        int qty = 1;
+        boolean found = false;
+        int rowToRemove = 0;
+        int QTY = (int) tvTable.getModel().getValueAt(i, 4);
+
+        if (QTY != 0) {
+            if (add != 0) {
+                for (int x = 0; x < receiptTable.getRowCount(); x++) {
+                    //int y = 0;
+                    if (receiptTable.getModel().getValueAt(x, 0).equals((String) tvTable.getModel().getValueAt(i, 0))) {
+                        found = true;
+                        rowToRemove = x;
+                        qty = (int) receiptTable.getModel().getValueAt(x, 3);
+                        qty++;
+
+                    }
+                }
+            }
+            add++;
+            if (!found) {
+
+                String product = (String) tvTable.getModel().getValueAt(i, 0);
+                double price = (double) tvTable.getModel().getValueAt(i, 3);
+
+                double total = qty * price;
+
+                tblModel.addRow(new Object[]{product,"TV", price, qty, total});
+
+            } else {
+                ((DefaultTableModel) receiptTable.getModel()).removeRow(rowToRemove);
+                String product = (String) tvTable.getModel().getValueAt(i, 0);
+                double price = (double) tvTable.getModel().getValueAt(i, 3);
+
+                double total = qty * price;
+
+                tblModel.addRow(new Object[]{product,"TV", price, qty, total});
+            }
+            QTY--;
+            tvTable.setValueAt(QTY, i, 4);
+        } else {
+            JOptionPane.showMessageDialog(null, "out of order");
+        }
+        Alltotal();
+        clearSelection();
+
+    }
+
+    public void clearSelection() {
+        receiptTable.getSelectionModel().clearSelection();
+        tvTable.getSelectionModel().clearSelection();
+        refrigeratorTable.getSelectionModel().clearSelection();
+        acTable.getSelectionModel().clearSelection();
+    }
+
+    public void Alltotal() {
+        double Alltotal = 0;
+        for (int x = 0; x < receiptTable.getRowCount(); x++) {
+           // int y = 3;
+
+            Alltotal = Alltotal + (double) receiptTable.getModel().getValueAt(x, 4);
+        }
+        String textAlltotal = String.valueOf(Alltotal);
+        allTotalLabel.setText("Total:  " + textAlltotal + "$");
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(listOfProducts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(listOfProducts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(listOfProducts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(listOfProducts.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    new purchase().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(listOfProducts.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+    }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable acTable;
+    private javax.swing.JButton addButton;
+    private javax.swing.JLabel allTotalLabel;
+    private javax.swing.JButton back;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel menuLabel1;
+    private javax.swing.JLabel menuLabel2;
+    private javax.swing.JLabel menuLabel3;
+    private javax.swing.JTable receiptTable;
+    private javax.swing.JButton reduceButton;
+    private javax.swing.JTable refrigeratorTable;
+    private javax.swing.JButton submitButton;
+    private javax.swing.JTable tvTable;
+    // End of variables declaration//GEN-END:variables
+}
