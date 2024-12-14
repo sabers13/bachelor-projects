@@ -1,0 +1,3 @@
+
+ winner:Player one/type: agility/Hit Count: 1/ManaX1 Count: 0/ManaX2 Count: 0/ManaX3 Count: 1/Super Power Hit:1
+ winner:Player two/type: intelligence/Hit Count: 7/ManaX1 Count: 1/ManaX2 Count: 0/ManaX3 Count: 1/Super Power Hit:1
