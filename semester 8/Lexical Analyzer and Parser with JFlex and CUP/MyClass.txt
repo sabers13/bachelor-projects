@@ -1,0 +1,39 @@
+public class MyClass begin
+        int intVar;
+        int intVar2 = 10;
+
+        void someFunction(int x, float y, double z) begin
+                // Function body
+        end
+
+        void freeFunction(int a1, int a2) begin
+                // Function body
+        end
+
+        public static void main(String[] args) begin
+                MyClass myClass = new MyClass();
+
+                float floatVar = 10.0f;
+                int j = 20 + 2 * 3 - 10 + 15 / 5; // j = 19
+
+                myClass.freeFunction(5, 10);
+
+                for (int i = 0; i < 10; i++) begin
+                        myClass.freeFunction(10, j);
+                end
+
+                int i = 0;
+                while (i < 10) begin
+                        System.out.println("Hello world!");
+                        i++;
+                end
+
+                if (i < 5) begin
+                        System.out.println("If!");
+                end else if (i < 5) begin
+                        System.out.println("Else if!");
+                end else begin
+                        System.out.println("Else!");
+                end
+        end
+end
