@@ -4,10 +4,17 @@ import pyodbc as odbc
 import os
 from tkinter import ttk
 
+data_source = 'SQL-ODBC'  # matches the System DSN you created
+
 def get_cursor():
-    data_source = 'SQL-ODBC'
-    connection = odbc.connect(f'DSN={data_source};')
-    return connection.cursor()
+    # For Driver 17: either set Encrypt=No in the DSN,
+    # or keep Encrypt=Yes and TrustServerCertificate=Yes.
+    conn = odbc.connect(
+        f"DSN={data_source};"
+        "Database=LibraryDB;"
+        "Encrypt=no;"  # <-- or use: Encrypt=yes;TrustServerCertificate=yes;
+    )
+    return conn.cursor()
 
 cursor = get_cursor()
 def generate_md5(password_str):
