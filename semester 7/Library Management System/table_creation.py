@@ -109,7 +109,7 @@ def creating_table():
         cursor.execute(members_table)
         cursor.execute(user_table)
         cursor.execute(transaction_table)
-        cursor.commit()
+        cursor.connection.commit()
         print("Tables created.", flush=True)
     else:
         pass
@@ -165,11 +165,11 @@ def create_admin():
         # If no admin exists, create a new admin
         creating_admin_query = """
             INSERT INTO member (username, password, first_name, last_name, email, address, phone, role)
-            VALUES ('admin', ?, 'Amir', 'Benny', 'amirbenny@gmail.com', 'iran', '+98921111111', 'Admin')
+            VALUES ('admin', ?, 'Saber', 'Sojudi', 'sojudisaber@gmail.com', 'Germany', '+49151111111', 'Admin')
         """
         hashed_password = generate_md5("123456")
         cursor.execute(creating_admin_query, hashed_password)
-        cursor.commit()
+        cursor.connection.commit()
         print("Admin Created Successfully!")
     else:
         pass
@@ -222,11 +222,15 @@ def add_constraints():
         for constraint in constraints:
             if not check_constraint_exists(constraint['name']):
                 cursor.execute(constraint['query'])
-                cursor.commit()
+                cursor.connection.commit()
                 print(f"Constraint {constraint['name']} added successfully.")
             else:
                 pass
     except Exception as e:
         print(f"Error checking/adding constraints: {e}")
 
-
+if __name__ == "__main__":
+    creating_table()
+    creating_indexes()
+    add_constraints()
+    create_admin()
