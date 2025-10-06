@@ -159,7 +159,7 @@ redPic = pygame.image.load('red piece.png')
 bluePic = pygame.image.load('blue piece.png')
 
 # Caption and Icon
-pygame.display.set_caption("Hex Game g-26")
+pygame.display.set_caption("Hex Game")
 icon = pygame.image.load('daneshgah_gilan.png')
 pygame.display.set_icon(icon)
 
@@ -230,3 +230,4 @@ while True:
         gameOver = True
 
     pygame.display.update()
+
