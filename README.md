@@ -20,9 +20,9 @@ This repository highlights a curated selection of projects developed during my B
 5. [Contact](#contact)
 
 ## Overview of Skills
-**Languages & Tools:** C++, Java, Python, VHDL, SQL (Microsoft SQL Server), Java Swing, JFlex, CUP
+**Languages & Tools:** C++, C, Java, Python, VHDL, SQL (Microsoft SQL Server), SQLite, Java Swing, JFlex, CUP, Assembly, Prefect, scipy, matlibplot, Power BI, Pygame
 
-**Data & AI Tools:** NumPy, Pandas, Pygame, VHDL
+**Data & AI Tools:** TensorFlow, Pandas, NumPy
 
 **Key Competencies:**
 - **Algorithmic Thinking & Data Structures:** Implemented sorting, searching, and optimization algorithms.
