@@ -1,0 +1,18 @@
+<ASSEMBLER_INFO>
+ <WORKING_DIR>c:\</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:\Program Files (x86)\Atmel\AVR Tools\AvrAssembler2\Appnotes</DIR>
+ </INCLUDE_PATH>
+ <INCLUDED_FILES>
+  <FILE>C:\Program Files (x86)\Atmel\AVR Tools\AvrAssembler2\Appnotes\M32DEF.INC</FILE>
+ </INCLUDED_FILES>
+ <LABELS>
+  <main><FILE>C:\Folder\uni\micro\key\key.asm</FILE><LINE>7</LINE></main>
+  <wait1><FILE>C:\Folder\uni\micro\key\key.asm</FILE><LINE>16</LINE></wait1>
+  <loop1><FILE>C:\Folder\uni\micro\key\key.asm</FILE><LINE>20</LINE></loop1>
+  <wait2><FILE>C:\Folder\uni\micro\key\key.asm</FILE><LINE>21</LINE></wait2>
+  <search><FILE>C:\Folder\uni\micro\key\key.asm</FILE><LINE>33</LINE></search>
+  <end><FILE>C:\Folder\uni\micro\key\key.asm</FILE><LINE>102</LINE></end>
+  <end1><FILE>C:\Folder\uni\micro\key\key.asm</FILE><LINE>118</LINE></end1>
+ </LABELS>
+</ASSEMBLER_INFO>
