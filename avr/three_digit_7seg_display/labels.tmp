@@ -1,0 +1,16 @@
+<ASSEMBLER_INFO>
+ <WORKING_DIR>c:\</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:\Program Files (x86)\Atmel\AVR Tools\AvrAssembler2\Appnotes</DIR>
+ </INCLUDE_PATH>
+ <INCLUDED_FILES>
+  <FILE>C:\Program Files (x86)\Atmel\AVR Tools\AvrAssembler2\Appnotes\M32DEF.INC</FILE>
+ </INCLUDED_FILES>
+ <LABELS>
+  <main><FILE>C:\Folder\uni\micro\ex10\ex10.asm</FILE><LINE>7</LINE></main>
+  <l1><FILE>C:\Folder\uni\micro\ex10\ex10.asm</FILE><LINE>17</LINE></l1>
+  <l2><FILE>C:\Folder\uni\micro\ex10\ex10.asm</FILE><LINE>22</LINE></l2>
+  <exit><FILE>C:\Folder\uni\micro\ex10\ex10.asm</FILE><LINE>27</LINE></exit>
+  <l3><FILE>C:\Folder\uni\micro\ex10\ex10.asm</FILE><LINE>34</LINE></l3>
+ </LABELS>
+</ASSEMBLER_INFO>
