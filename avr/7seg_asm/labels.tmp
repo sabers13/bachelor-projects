@@ -1,0 +1,15 @@
+<ASSEMBLER_INFO>
+ <WORKING_DIR>c:\</WORKING_DIR>
+ <INCLUDE_PATH>
+  <DIR>C:\Program Files (x86)\Atmel\AVR Tools\AvrAssembler2\Appnotes</DIR>
+ </INCLUDE_PATH>
+ <INCLUDED_FILES>
+  <FILE>C:\Program Files (x86)\Atmel\AVR Tools\AvrAssembler2\Appnotes\M32DEF.INC</FILE>
+ </INCLUDED_FILES>
+ <LABELS>
+  <main><FILE>C:\Folder\uni\micro\7seg\7seg.asm</FILE><LINE>8</LINE></main>
+  <l1><FILE>C:\Folder\uni\micro\7seg\7seg.asm</FILE><LINE>16</LINE></l1>
+  <exit><FILE>C:\Folder\uni\micro\7seg\7seg.asm</FILE><LINE>21</LINE></exit>
+  <l3><FILE>C:\Folder\uni\micro\7seg\7seg.asm</FILE><LINE>27</LINE></l3>
+ </LABELS>
+</ASSEMBLER_INFO>
